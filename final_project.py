@@ -12,8 +12,8 @@ screen.fill(background_color)
 title_font = pygame.font.SysFont("airal", 72)
 button_font = pygame.font.SysFont("arial", 40)
 
-play_button = pygame.Rect(400, 300, 200, 80)
-quit_button = pygame.Rect(400, 420, 200, 80)
+play_button = pygame.Rect(400, 400, 200, 80)
+quit_button = pygame.Rect(400, 520, 200, 80)
 MENU = "menu"
 GAME = "game"
 state = MENU
@@ -23,7 +23,7 @@ def draw_menu():
     screen.fill(background_color)
 
     title_text = title_font.render("Mini Golf by Martin Kim", True, (255, 255, 255))
-    screen.blit(title_text, (width // 2 - title_text.get_width() // 2, 120))
+    screen.blit(title_text, (width // 2 - title_text.get_width() // 2, 220))
 
     pygame.draw.rect(screen, (0, 255, 0), play_button)
     play_text = button_font.render("PLAY", True, (0, 0, 0))
