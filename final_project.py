@@ -25,11 +25,11 @@ def draw_menu():
     title_text = title_font.render("Mini Golf by Martin Kim", True, (255, 255, 255))
     screen.blit(title_text, (width // 2 - title_text.get_width() // 2, 120))
 
-    pygame.draw.rect(screen, (200, 200, 200), play_button)
+    pygame.draw.rect(screen, (0, 255, 0), play_button)
     play_text = button_font.render("PLAY", True, (0, 0, 0))
     screen.blit(play_text, (play_button.x + 60, play_button.y + 20))
 
-    pygame.draw.rect(screen, (200, 200, 200), quit_button)
+    pygame.draw.rect(screen, (255, 0, 0), quit_button)
     quit_text = button_font.render("QUIT", True, (0, 0, 0))
     screen.blit(quit_text, (quit_button.x + 60, quit_button.y + 20))
 
