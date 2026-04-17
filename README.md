@@ -1,6 +1,6 @@
 # bcog200-mini-golf
 ## Project Check In #3
- I WILL COMPLETE THE PROJECT CHECK IN #3 SURVEY
+ I HAVE COMPLETED THE PROJECT CHECK IN #3 SURVEY
 ## Project Check In #2
  In this check in I created a home screen for my mini golf game, complete with a working play and quit button. 
 ## Project Check In #1
