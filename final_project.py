@@ -22,6 +22,7 @@ GAME = "game"
 state = MENU
 
 
+#
 def draw_checkerboard(tile_size=50):
     for row in range(0, height, tile_size):
         for col in range(0, width, tile_size):
@@ -47,7 +48,7 @@ def draw_menu():
     screen.blit(quit_text, (quit_button.x + 60, quit_button.y + 20))
 
 
-def run_game_placeholder():
+def controls_page():
     draw_checkerboard()
 
     title = title_font.render("Controls", True, (255, 255, 255))
@@ -83,7 +84,7 @@ while running:
     if state == MENU:
         draw_menu()
     elif state == GAME:
-        run_game_placeholder()
+        controls_page()
 
     pygame.display.flip()
 
