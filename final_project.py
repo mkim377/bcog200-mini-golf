@@ -5,7 +5,7 @@ pygame.init()
 background_color = (79, 121, 66)
 dark_green = (43, 92, 34)
 
-(width, height) = (1000, 800)
+width, height = (1000, 800)
 
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Mini_Golf_Game")
@@ -48,8 +48,8 @@ def draw_menu():
 
 def run_game_placeholder():
     screen.fill((30, 30, 30))
-    text = button_font.render("Mini Golf", True, (255, 255, 255))
-    screen.blit(text, (width // 2 - text.get_width() // 2, height // 2))
+    text = title_font.render("Controls", True, (255, 255, 255))
+    screen.blit(text, (width // 2 - text.get_width() // 2, 100))
 
 
 running = True
@@ -74,3 +74,5 @@ while running:
 
 pygame.quit()
 sys.exit()
+
+# NEED REQUIEREMENTS.TXT FILE FOR PYGAME
