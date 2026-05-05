@@ -1,5 +1,6 @@
 import pygame
 import sys
+import math
 
 pygame.init()
 background_color = (79, 121, 66)
@@ -10,7 +11,7 @@ width, height = (1000, 800)
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Mini_Golf_Game")
 
-title_font = pygame.font.SysFont("airal", 72)
+title_font = pygame.font.SysFont("airal", 75)
 button_font = pygame.font.SysFont("arial", 40)
 
 play_button = pygame.Rect(400, 375, 200, 80)
@@ -35,7 +36,7 @@ def draw_menu():
     draw_checkerboard()
 
     title_text = title_font.render("Mini Golf by Martin Kim", True, (255, 255, 255))
-    screen.blit(title_text, (width // 2 - title_text.get_width() // 2, 220))
+    screen.blit(title_text, (width // 2 - title_text.get_width() // 2, 225))
 
     pygame.draw.rect(screen, (0, 255, 0), play_button)
     play_text = button_font.render("PLAY", True, (0, 0, 0))
@@ -47,9 +48,23 @@ def draw_menu():
 
 
 def run_game_placeholder():
-    screen.fill((30, 30, 30))
-    text = title_font.render("Controls", True, (255, 255, 255))
-    screen.blit(text, (width // 2 - text.get_width() // 2, 100))
+    draw_checkerboard()
+
+    title = title_font.render("Controls", True, (255, 255, 255))
+    screen.blit(title, (width // 2 - title.get_width() // 2, 200))
+
+    text_1 = button_font.render(
+        "Use the arrow keys to aim left and right", True, (255, 255, 255)
+    )
+    screen.blit(text_1, (width // 2 - text_1.get_width() // 2, 300))
+
+    text_2 = button_font.render(
+        "Use the space bar to determine power", True, (255, 255, 255)
+    )
+    screen.blit(text_2, (width // 2 - text_2.get_width() // 2, 400))
+
+    text_3 = button_font.render("Press space to continue", True, (255, 255, 255))
+    screen.blit(text_3, (width // 2 - text_3.get_width() // 2, 500))
 
 
 running = True
