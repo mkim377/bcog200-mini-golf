@@ -39,6 +39,14 @@ hole_x = 850
 hole_y = 400
 hole_radius = 20
 
+angle = 0
+power = 0
+charging = False
+
+ball_moving = False
+
+strokes = 0
+
 
 def draw_checkerboard(tile_size=50):
     for row in range(0, height, tile_size):
