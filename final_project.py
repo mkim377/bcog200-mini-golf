@@ -3,8 +3,11 @@ import sys
 import math
 
 pygame.init()
+
 background_color = (79, 121, 66)
 dark_green = (43, 92, 34)
+white = (255, 255, 255)
+black = (0, 0, 0)
 
 width, height = (1000, 800)
 
@@ -18,11 +21,25 @@ play_button = pygame.Rect(400, 375, 200, 80)
 quit_button = pygame.Rect(400, 475, 200, 80)
 
 MENU = "menu"
+CONTROLS = "controls"
 GAME = "game"
+WIN = "win"
+
 state = MENU
+clock = pygame.time.Clock()
+
+ball_x = 150
+ball_y = 400
+ball_radius = 15
+
+ball_speed_x = 0
+ball_speed_y = 0
+
+hole_x = 850
+hole_y = 400
+hole_radius = 20
 
 
-#
 def draw_checkerboard(tile_size=50):
     for row in range(0, height, tile_size):
         for col in range(0, width, tile_size):
