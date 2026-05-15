@@ -61,36 +61,36 @@ def draw_checkerboard(tile_size=50):
 def draw_menu():
     draw_checkerboard()
 
-    title_text = title_font.render("Mini Golf by Martin Kim", True, (255, 255, 255))
+    title_text = title_font.render("Mini Golf by Martin Kim", True, white)
     screen.blit(title_text, (width // 2 - title_text.get_width() // 2, 225))
 
     pygame.draw.rect(screen, (0, 255, 0), play_button)
-    play_text = button_font.render("PLAY", True, (0, 0, 0))
-    screen.blit(play_text, (play_button.x + 60, play_button.y + 20))
+    play_text = button_font.render("PLAY", True, black)
+    screen.blit(play_text, (play_button.x + 50, play_button.y + 20))
 
     pygame.draw.rect(screen, (255, 0, 0), quit_button)
-    quit_text = button_font.render("QUIT", True, (0, 0, 0))
-    screen.blit(quit_text, (quit_button.x + 60, quit_button.y + 20))
+    quit_text = button_font.render("QUIT", True, black)
+    screen.blit(quit_text, (quit_button.x + 50, quit_button.y + 20))
 
 
 def controls_page():
     draw_checkerboard()
 
-    title = title_font.render("Controls", True, (255, 255, 255))
+    title = title_font.render("Controls", True, white)
     screen.blit(title, (width // 2 - title.get_width() // 2, 200))
 
-    text_1 = button_font.render(
-        "Use the arrow keys to aim left and right", True, (255, 255, 255)
-    )
+    text_1 = button_font.render("Use the arrow keys to aim left and right", True, white)
+
     screen.blit(text_1, (width // 2 - text_1.get_width() // 2, 300))
 
-    text_2 = button_font.render(
-        "Use the space bar to determine power", True, (255, 255, 255)
-    )
+    text_2 = button_font.render("Hold SPACE to determine power", True, white)
     screen.blit(text_2, (width // 2 - text_2.get_width() // 2, 400))
 
-    text_3 = button_font.render("Press space to continue", True, (255, 255, 255))
+    text_3 = button_font.render("Release SPACE to shoot", True, white)
     screen.blit(text_3, (width // 2 - text_3.get_width() // 2, 500))
+
+    text_4 = button_font.render("Press ENTER to continue", True, white)
+    screen.blit(text_3, (width // 2 - text_3.get_width() // 2, 600))
 
 
 running = True
