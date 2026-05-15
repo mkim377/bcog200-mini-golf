@@ -90,7 +90,7 @@ def controls_page():
     screen.blit(text_3, (width // 2 - text_3.get_width() // 2, 500))
 
     text_4 = button_font.render("Press ENTER to continue", True, white)
-    screen.blit(text_3, (width // 2 - text_3.get_width() // 2, 600))
+    screen.blit(text_4, (width // 2 - text_4.get_width() // 2, 600))
 
 
 running = True
