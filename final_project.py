@@ -48,6 +48,13 @@ current_hole = 0
 
 pars = {1: 2, 2: 3, 3: 5}
 
+ball_x = 150
+ball_y = 400
+
+water = pygame.rect(400, 300, 200, 100)
+walls = pygame.rect(300, 200, 30, 300)
+play_button = pygame.rect(400, 400, 200, 80)
+
 
 def draw_checkerboard(tile_size=50):
 
