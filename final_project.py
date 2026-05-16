@@ -18,6 +18,7 @@ pygame.display.set_caption("Mini_Golf_Game")
 
 title_font = pygame.font.SysFont("airal", 75)
 button_font = pygame.font.SysFont("arial", 40)
+small_font = pygame.font.SysFont("arial", 30)
 
 play_button = pygame.Rect(400, 375, 200, 80)
 quit_button = pygame.Rect(400, 475, 200, 80)
@@ -30,24 +31,22 @@ WIN = "win"
 state = MENU
 clock = pygame.time.Clock()
 
-ball_x = 150
-ball_y = 400
 ball_radius = 15
-
 ball_speed_x = 0
 ball_speed_y = 0
-
-hole_x = 850
-hole_y = 400
-hole_radius = 20
+ball_moving = False
 
 angle = 0
 power = 0
 charging = False
 
-ball_moving = False
-
 strokes = 0
+
+hole_scores = {1: 0, 2: 0, 3: 0}
+
+current_hole = 0
+
+pars = {1: 2, 2: 3, 3: 5}
 
 
 def draw_checkerboard(tile_size=50):
