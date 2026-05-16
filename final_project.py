@@ -93,6 +93,69 @@ def move_ball():
 
         ball_x = start_x
         ball_y = start_y
+
+
+running = True
+
+while running:
+
+    clock.tick(60)
+
+    for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            running = False
+
+        if state == MENU:
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+
+                if play_button.collidepoint(event.pos):
+                    state = GAME
+
+        if state == GAME:
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_SPACE:
+                    charging = True
+
+            if event.type == pygame.KEYUP:
+
+                if event.key == pygame.K_SPACE:
+
+                    charging = False
+
+                    speed_x = math.cos(math.radians(angle)) * power
+                    speed_y = math.sin(math.radians(angle)) * power
+
+                    power = 0
+
+    if state == GAME:
+
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_LEFT]:
+            angle += 5
+
+        if keys[pygame.K_RIGHT]:
+            angle -= 5
+
+        if charging == True:
+            power += 1
+
+        move_ball
+
+        draw_game()
+
+    elif state == MENU:
+
+        draw_menu()
+
+    pygame.display.update()
+
+pygame.quit()
+sys.exit()
 def draw_checkerboard(tile_size=50):
 
     for row in range(0, height, tile_size):
