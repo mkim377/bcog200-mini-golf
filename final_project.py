@@ -50,12 +50,15 @@ pars = {1: 2, 2: 3, 3: 5}
 
 
 def draw_checkerboard(tile_size=50):
+
     for row in range(0, height, tile_size):
         for col in range(0, width, tile_size):
+
             if (row // tile_size + col // tile_size) % 2 == 0:
                 color = background_color
             else:
                 color = dark_green
+
             pygame.draw.rect(screen, color, (col, row, tile_size, tile_size))
 
 
@@ -74,28 +77,38 @@ def draw_menu():
     screen.blit(quit_text, (quit_button.x + 50, quit_button.y + 20))
 
 
+# Controls
+
+
 def controls_page():
+
     draw_checkerboard()
 
     title = title_font.render("Controls", True, white)
     screen.blit(title, (width // 2 - title.get_width() // 2, 200))
 
-    text_1 = button_font.render("Use the arrow keys to aim left and right", True, white)
+    text_1 = button_font.render("Use LEFT and RIGHT arrows to aim", True, white)
 
     screen.blit(text_1, (width // 2 - text_1.get_width() // 2, 300))
 
-    text_2 = button_font.render("Hold SPACE to determine power", True, white)
+    text_2 = button_font.render("Hold SPACE to gain power", True, white)
+
     screen.blit(text_2, (width // 2 - text_2.get_width() // 2, 400))
 
     text_3 = button_font.render("Release SPACE to shoot", True, white)
+
     screen.blit(text_3, (width // 2 - text_3.get_width() // 2, 500))
 
     text_4 = button_font.render("Press ENTER to continue", True, white)
+
     screen.blit(text_4, (width // 2 - text_4.get_width() // 2, 600))
 
 
 running = True
 while running:
+
+    clock.tick(60)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
