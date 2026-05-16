@@ -54,6 +54,16 @@ ball_y = 400
 water = pygame.rect(400, 300, 200, 100)
 walls = pygame.rect(300, 200, 30, 300)
 play_button = pygame.rect(400, 400, 200, 80)
+def draw_game():
+    draw_checkerboard()
+    pygame.draw.circle(screen,white,(ball_x, ball_y), ball_radius)
+    pygame.draw.rect(screen,blue,water)
+    for wall in walls:
+        pygame.draw.rect(screen,brown,wall)
+        line_x = ball_x + math.cos(angle) * 100
+        line_y = ball_y - math.sin(angle) * 100
+        pygame.draw.line(screen, white, (ball_x, ball_y), (line_x, line_y),5)
+        pygame.draw.rect(screen, white, (50, 50, power * 5, 25))
 
 
 def draw_checkerboard(tile_size=50):
