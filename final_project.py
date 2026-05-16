@@ -8,6 +8,8 @@ background_color = (79, 121, 66)
 dark_green = (43, 92, 34)
 white = (255, 255, 255)
 black = (0, 0, 0)
+blue = (0, 100, 255)
+brown = (150, 75, 0)
 
 width, height = (1000, 800)
 
