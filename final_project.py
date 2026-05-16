@@ -66,6 +66,33 @@ def draw_game():
         pygame.draw.rect(screen, white, (50, 50, power * 5, 25))
 
 
+def move_ball():
+    ball_x += speed_x
+    ball_y += speed_y
+
+    speed_x = speed_x * 0.98
+    speed_y = speed_y * 0.98
+
+    if ball_x < 0:
+        speed_x *= -1
+
+    if ball_y > height:
+        speed_y = speed_y * -1
+
+    ball_rect = pygame.Rect(ball_x, ball_y, ball_radius, ball_radius)
+
+    for wall in walls:
+
+        if ball_rect.colliderect(walls):
+            speed_x = -speed_x
+            speed_y = -speed_y
+
+    if ball_rect.colliderect(water):
+
+        strokes = strokes + 1
+
+        ball_x = start_x
+        ball_y = start_y
 def draw_checkerboard(tile_size=50):
 
     for row in range(0, height, tile_size):
