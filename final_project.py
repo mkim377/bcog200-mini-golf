@@ -485,7 +485,8 @@ def draw_win_screen():
     screen.blit(quit_text, (width // 2 - quit_text.get_width() // 2, 650))
 
 
-# Main loop
+# Main loop AI ATTRIBUTION
+# USED CHATGPT-5.3 mini model to assist with creating the while loop that runs game, struggled to get it working without help from it.
 
 running = True
 
