@@ -509,10 +509,79 @@ while running:
                 if quit_button.collidepoint(event.pos):
                     running = False
 
+        # Controls
+        elif state == CONTROLS:
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_RETURN:
+                    state = GAME
+
+        # Game
+        elif state == GAME:
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_SPACE and not ball_moving:
+                    charging = True
+
+            if event.type == pygame.KEYUP:
+
+                if event.key == pygame.K_SPACE and not ball_moving:
+
+                    charging = False
+                    ball_moving = True
+
+                    strokes += 1
+                    hole_scores[current_hole] += 1
+
+                    ball_speed_x = math.cos(math.radians(angle)) * (power / 2.5)
+                    ball_speed_y = -math.sin(math.radians(angle)) * (power / 2.5)
+
+                    power = 0
+
+        # Win screen
+        elif state == WIN:
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+
+    # Game
+    if state == GAME:
+
+        keys = pygame.key.get_pressed()
+
+        if not ball_moving:
+
+            if keys[pygame.K_LEFT]:
+                angle += 2
+
+            if keys[pygame.K_RIGHT]:
+                angle -= 2
+
+        if charging:
+
+            power += 1
+
+            if power > 25:
+                power = 25
+
+        move_ball()
+
+    # Drawing
     if state == MENU:
         draw_menu()
-    elif state == GAME:
+
+    elif state == CONTROLS:
         controls_page()
+
+    elif state == GAME:
+        draw_game()
+
+    elif state == WIN:
+        draw_win_screen()
 
     pygame.display.flip()
 
