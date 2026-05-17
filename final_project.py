@@ -283,12 +283,7 @@ def controls_page():
 
 # Game screen
 
-ball_x = 150
-ball_y = 400
 
-water = pygame.rect(400, 300, 200, 100)
-walls = pygame.rect(300, 200, 30, 300)
-play_button = pygame.rect(400, 400, 200, 80)
 def draw_game():
 
     draw_checkerboard()
@@ -351,14 +346,25 @@ def draw_game():
 
 def move_ball():
 
+    global ball_x
+    global ball_y
+    global ball_speed_x
+    global ball_speed_y
+    global ball_moving
+    global current_hole
+    global state
+    global strokes
+
+    ball_x += ball_speed_x
+    ball_y += ball_speed_y
+
                 if event.key == pygame.K_SPACE:
-                    charging = True
+    # Friction
+    ball_speed_x *= 0.99
+    ball_speed_y *= 0.99
 
-            if event.type == pygame.KEYUP:
-
-                if event.key == pygame.K_SPACE:
-
-                    charging = False
+    # Stop ball
+    if abs(ball_speed_x) < 0.1 and abs(ball_speed_y) < 0.1:
 
         ball_speed_x = 0
         ball_speed_y = 0
