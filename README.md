@@ -1,4 +1,6 @@
 # bcog200-mini-golf
+## How to run this project
+You will only need to download pygame to be able to run these Python files. Install with 'pip install pygame' in your terminal. 
 ## How I tested this project
 I utilized the final_project_test.py to test the code written in the final_project file, mainly if the physics were working how I wanted them to, how the ball interacted with the water (how sensitive I wanted the ball registering as touching the water), and different hole layouts. After testing a certain hole layout, I'd copy and paste it from the test file to the main hole layout function. 
 ## Project Check In #3
