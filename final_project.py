@@ -43,13 +43,245 @@ charging = False
 
 strokes = 0
 
-hole_scores = {1: 0, 2: 0, 3: 0}
+hole_scores = {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0,
+    9: 0,
+}
+
+current_hole = 1
+
+pars = {
+    1: 2,
+    2: 3,
+    3: 5,
+    4: 3,
+    5: 5,
+    6: 6,
+    7: 5,
+    8: 5,
+    9: 6,
+}
+
+
+hole_layout = {
+    1: {
+        "ball_start": (150, 400),
+        "hole_pos": (850, 400),
+        "walls": [],
+        "water": [],
+    },
+    2: {
+        "ball_start": (120, 700),
+        "hole_pos": (900, 100),
+        "walls": [
+            pygame.Rect(350, 200, 30, 400),
+            pygame.Rect(650, 0, 30, 450),
+        ],
+        "water": [],
+    },
+    3: {
+        "ball_start": (100, 700),
+        "hole_pos": (900, 120),
+        "walls": [
+            pygame.Rect(300, 0, 30, 500),
+            pygame.Rect(550, 250, 30, 550),
+            pygame.Rect(780, 0, 30, 350),
+        ],
+        "water": [
+            pygame.Rect(520, 120, 140, 70),
+        ],
+    },
+    4: {
+        "ball_start": (120, 650),
+        "hole_pos": (900, 120),
+        "walls": [
+            pygame.Rect(250, 0, 30, 500),
+            pygame.Rect(500, 300, 30, 500),
+            pygame.Rect(750, 0, 30, 450),
+        ],
+        "water": [
+            pygame.Rect(380, 620, 110, 45),
+        ],
+    },
+    5: {
+        "ball_start": (120, 700),
+        "hole_pos": (900, 100),
+        "walls": [
+            pygame.Rect(180, 0, 30, 600),
+            pygame.Rect(400, 200, 30, 600),
+            pygame.Rect(620, 0, 30, 500),
+        ],
+        "water": [
+            pygame.Rect(280, 650, 100, 40),
+            pygame.Rect(520, 320, 110, 40),
+        ],
+    },
+    6: {  # OLD HOLE 5
+        "ball_start": (100, 720),
+        "hole_pos": (920, 100),
+        "walls": [
+            pygame.Rect(220, 150, 30, 650),
+            pygame.Rect(420, 0, 30, 500),
+            pygame.Rect(620, 250, 30, 550),
+            pygame.Rect(820, 0, 30, 400),
+        ],
+        "water": [
+            pygame.Rect(500, 580, 120, 45),
+            pygame.Rect(720, 180, 100, 40),
+        ],
+    },
+    7: {
+        "ball_start": (100, 740),
+        "hole_pos": (920, 90),
+        "walls": [
+            pygame.Rect(200, 0, 30, 600),
+            pygame.Rect(400, 200, 30, 600),
+            pygame.Rect(620, 0, 30, 500),
+            pygame.Rect(820, 250, 30, 450),
+        ],
+        "water": [
+            pygame.Rect(300, 680, 100, 40),
+            pygame.Rect(540, 420, 100, 40),
+            pygame.Rect(720, 120, 100, 40),
+        ],
+    },
+    8: {
+        "ball_start": (100, 720),
+        "hole_pos": (920, 100),
+        "walls": [
+            pygame.Rect(180, 150, 30, 650),
+            pygame.Rect(420, 0, 30, 500),
+            pygame.Rect(650, 250, 30, 550),
+        ],
+        "water": [
+            pygame.Rect(250, 650, 100, 40),
+            pygame.Rect(520, 120, 100, 40),
+        ],
+    },
+    9: {
+        "ball_start": (100, 740),
+        "hole_pos": (920, 90),
+        "walls": [
+            pygame.Rect(180, 100, 30, 700),
+            pygame.Rect(350, 0, 30, 500),
+            pygame.Rect(520, 250, 30, 550),
+            pygame.Rect(700, 0, 30, 500),
+            pygame.Rect(860, 250, 30, 400),
+        ],
+        "water": [
+            pygame.Rect(250, 680, 100, 40),
+            pygame.Rect(450, 500, 100, 40),
+            pygame.Rect(650, 120, 100, 40),
+        ],
+    },
+}
+
+ball_x, ball_y = hole_layout[current_hole]["ball_start"]
+
+hole_x, hole_y = hole_layout[current_hole]["hole_pos"]
+hole_radius = 20
+
+
+def load_hole(hole_number):
+
+    global ball_x
+    global ball_y
+    global hole_x
+    global hole_y
+    global ball_speed_x
+    global ball_speed_y
+    global ball_moving
+    global angle
+    global power
+
+    ball_x, ball_y = hole_layout[hole_number]["ball_start"]
+
+    hole_x, hole_y = hole_layout[hole_number]["hole_pos"]
+
+    ball_speed_x = 0
+    ball_speed_y = 0
+
+    ball_moving = False
+
+    angle = 0
+    power = 0
+
+
+# Checkerboard Background
+
+
+def draw_checkerboard(tile_size=50):
+
+    for row in range(0, height, tile_size):
+        for col in range(0, width, tile_size):
+
+            if (row // tile_size + col // tile_size) % 2 == 0:
+                color = background_color
+            else:
+                color = dark_green
+
+            pygame.draw.rect(screen, color, (col, row, tile_size, tile_size))
+
+
+# Menu Screen
+
+
+def draw_menu():
+
+    draw_checkerboard()
+
+    title_text = title_font.render("Mini Golf by Martin Kim", True, white)
+
+    screen.blit(title_text, (width // 2 - title_text.get_width() // 2, 225))
+
+    pygame.draw.rect(screen, (0, 255, 0), play_button)
+
+    play_text = button_font.render("PLAY", True, black)
+
+    screen.blit(play_text, (play_button.x + 50, play_button.y + 20))
+
+    pygame.draw.rect(screen, (255, 0, 0), quit_button)
+
+    quit_text = button_font.render("QUIT", True, black)
+
+    screen.blit(quit_text, (quit_button.x + 50, quit_button.y + 20))
+
+
+# Controls
+
+
+def controls_page():
+
+    draw_checkerboard()
+
+    title = title_font.render("Controls", True, white)
+    screen.blit(title, (width // 2 - title.get_width() // 2, 200))
+
+    text_1 = button_font.render("Use LEFT and RIGHT arrows to aim", True, white)
 
     screen.blit(text_1, (width // 2 - text_1.get_width() // 2, 300))
 
     text_2 = button_font.render("Hold SPACE to gain power", True, white)
 
-pars = {1: 2, 2: 3, 3: 5}
+    screen.blit(text_2, (width // 2 - text_2.get_width() // 2, 400))
+
+    text_3 = button_font.render("Release SPACE to shoot", True, white)
+
+    screen.blit(text_3, (width // 2 - text_3.get_width() // 2, 500))
+
+    text_4 = button_font.render("Press ENTER to continue", True, white)
+
+    screen.blit(text_4, (width // 2 - text_4.get_width() // 2, 600))
+
+
+# Game screen
 
 ball_x = 150
 ball_y = 400
