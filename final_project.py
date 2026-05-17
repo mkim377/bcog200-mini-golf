@@ -358,7 +358,6 @@ def move_ball():
     ball_x += ball_speed_x
     ball_y += ball_speed_y
 
-                if event.key == pygame.K_SPACE:
     # Friction
     ball_speed_x *= 0.99
     ball_speed_y *= 0.99
@@ -461,8 +460,32 @@ def draw_win_screen():
     # Hole rows
     for hole in range(1, 10):
 
-    screen.blit(text_4, (width // 2 - text_4.get_width() // 2, 600))
+        y = 230 + (hole - 1) * 40
 
+        hole_text = small_font.render(str(hole), True, white)
+        par_text = small_font.render(str(pars[hole]), True, white)
+        score_text = small_font.render(str(hole_scores[hole]), True, white)
+
+        screen.blit(hole_text, (300, y))
+        screen.blit(par_text, (500, y))
+        screen.blit(score_text, (680, y))
+
+    # Totals
+    total_par = sum(pars.values())
+
+    total_par_text = small_font.render("Par: " + str(total_par), True, white)
+
+    total_score_text = small_font.render("Score: " + str(strokes), True, white)
+
+    screen.blit(total_par_text, (260, 760))
+    screen.blit(total_score_text, (520, 760))
+
+    quit_text = button_font.render("Press ESC to quit", True, white)
+
+    screen.blit(quit_text, (width // 2 - quit_text.get_width() // 2, 650))
+
+
+# Main loop
 
 running = True
 
