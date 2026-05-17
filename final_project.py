@@ -123,7 +123,7 @@ hole_layout = {
             pygame.Rect(520, 320, 110, 40),
         ],
     },
-    6: {  # OLD HOLE 5
+    6: {
         "ball_start": (100, 720),
         "hole_pos": (920, 100),
         "walls": [
@@ -214,7 +214,7 @@ def load_hole(hole_number):
     power = 0
 
 
-# Checkerboard Background
+# Checkerboard Background NOT OWN CODE USED GOOGLES'S AI OVERVIEW AFTER SEARCHING "HOW TO CREATE A CHECKERBOARD PATTERN" https://share.google/aimode/86Jt2CRy5DA8bXXNh
 
 
 def draw_checkerboard(tile_size=50):
